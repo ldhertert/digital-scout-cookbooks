@@ -43,3 +43,8 @@ windows_package 'Install New Relic Server Monitoring Agent' do
 	action :install
 	not_if { ::File.exist?('C:\\Program Files\\New Relic\\Server Monitor') }
 end
+
+#this shouldn't be necessary, because it's required by opsworks, but the "update custom cookbooks is failing due to git not being accessible"
+windows_path 'C:\ProgramData\Git\bin' do
+  action :add
+end
