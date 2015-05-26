@@ -29,7 +29,10 @@ powershell_script 'Install Dynamic Compression' do
 end	
 
 powershell_script 'Install Chocolatey' do
-	code 'iex ((new-object net.webclient).DownloadString("https://chocolatey.org/install.ps1"))'
+	code  <<-EOH
+	iex ((new-object net.webclient).DownloadString("https://chocolatey.org/install.ps1"))
+	$env:Path = "$($env:PATH);$($env:ALLUSERSPROFILE)\chocolatey\bin"
+	EOH
 	only_if '(get-command "choco.exe" -ErrorAction SilentlyContinue) -eq $null'
 end
 
