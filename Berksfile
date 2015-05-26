@@ -1,4 +1,4 @@
-source "https://supermarket.getchef.com"
+source "https://api.berkshelf.com"
 
 cookbook 'chocolatey'
 
