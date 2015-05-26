@@ -27,6 +27,18 @@ chocolatey 'SublimeText3'
 chocolatey '7zip.install'
 chocolatey 'googlechrome'
 
-chocolatey 'newrelic-dotnet' do
-	args 'licensekey=df77750758d88ba07d962482cb3a6939c9309e23'
+windows_package 'Install New Relic .NET Agent' do
+	source "http://download.newrelic.com/dot_net_agent/release/NewRelicDotNetAgent_x64.msi"
+	options "/qb NR_LICENSE_KEY=#{node['newrelic']['licensekey']} INSTALLLEVEL=1"
+	installer_type :msi
+	action :install
+	not_if { ::File.exist?('C:\\Program Files\\New Relic\\.NET Agent') }
+end
+
+windows_package 'Install New Relic Server Monitoring Agent' do
+	source "http://download.newrelic.com/windows_server_monitor/release/NewRelicServerMonitor_x64_3.3.3.0.msi"
+	options "/L*v install.log /qn NR_LICENSE_KEY=#{node['newrelic']['licensekey']}"
+	installer_type :msi
+	action :install
+	not_if { ::File.exist?('C:\\Program Files\\New Relic\\Server Monitor') }
 end
