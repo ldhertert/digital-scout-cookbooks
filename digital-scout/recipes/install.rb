@@ -1,34 +1,25 @@
 include_recipe 'chocolatey'
 
-powershell_script 'Install IIS' do
-  code 'Add-WindowsFeature Web-Server'
-  not_if "(Get-WindowsFeature -Name Web-Server).Installed"
+windows_feature 'Web-Server' do
+  action :install
 end
 
-powershell_script 'Install Web Management Tools' do
-  code 'Add-WindowsFeature Web-Mgmt-Tools -IncludeAllSubFeature'
-  not_if "(Get-WindowsFeature -Name Web-Mgmt-Tools).Installed"
+windows_feature 'Web-Mgmt-Tools' do
+  action :install
+  all true
 end
 
-powershell_script 'Install Web Management Tools' do
-  code 'Add-WindowsFeature Web-Mgmt-Tools -IncludeAllSubFeature'
-  not_if "(Get-WindowsFeature -Name Web-Mgmt-Tools).Installed"
+windows_feature 'Web-Net-Ext45' do
+  action :install
 end
 
-powershell_script 'Install Web-Net-Ext45' do
-	code 'Install-WindowsFeature Web-Net-Ext45'
-	not_if "(Get-WindowsFeature -Name Web-Net-Ext45).Installed"
+windows_feature 'Web-Asp-Net45' do
+  action :install
 end
 
-powershell_script 'Install Web-Asp-Net45' do
-	code 'Install-WindowsFeature Web-Asp-Net45'
-	not_if "(Get-WindowsFeature -Name Web-Asp-Net45).Installed"
-end	
-
-powershell_script 'Install Dynamic Compression' do
-	code 'Install-WindowsFeature Web-Dyn-Compression'
-	not_if "(Get-WindowsFeature -Name Web-Dyn-Compression).Installed"
-end	
+windows_feature 'Web-Dyn-Compression' do
+  action :install
+end
 
 chocolatey 'UrlRewrite'
 
