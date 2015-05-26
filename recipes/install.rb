@@ -37,21 +37,21 @@ powershell_script 'Install Chocolatey' do
 end
 
 powershell_script 'Install URL Rewrite' do
-	code 'choco install UrlRewrite'
+	code 'choco install UrlRewrite -y'
 	#only_if '(choco list -localonly | Select-String "UrlRewrite") -eq $null'
 end
 
 powershell_script 'Install Web Deploy' do
-	code 'choco install WebDeploy'
+	code 'choco install WebDeploy -y'
 	#only_if '(choco list -localonly | Select-String "WebDeploy") -eq $null'
 end
 
 powershell_script 'Install Sublime Text 3' do
-	code 'choco install SublimeText3'
+	code 'choco install SublimeText3 -y'
 	#only_if '(choco list -localonly | Select-String "SublimeText3") -eq $null'
 end
 
 powershell_script 'Install 7zip' do
-	code 'choco install 7zip.install'
+	code 'choco install 7zip.install -y'
 	#only_if '(choco list -localonly | Select-String "7zip.install") -eq $null'
 end
