@@ -1,23 +1,23 @@
 include_recipe 'chocolatey'
 
-windows_feature 'Web-Server' do
+windows_feature 'IIS-WebServerRole' do
   action :install
 end
 
-windows_feature 'Web-Mgmt-Tools' do
+windows_feature 'IIS-WebServerManagementTools' do
   action :install
   all true
 end
 
-windows_feature 'Web-Net-Ext45' do
+windows_feature 'IIS-NetFxExtensibility45' do
   action :install
 end
 
-windows_feature 'Web-Asp-Net45' do
+windows_feature 'IIS-ASPNET45' do
   action :install
 end
 
-windows_feature 'Web-Dyn-Compression' do
+windows_feature 'HttpCompressionDynamic' do
   action :install
 end
 
