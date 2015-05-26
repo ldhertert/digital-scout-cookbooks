@@ -17,7 +17,7 @@ windows_feature 'IIS-ASPNET45' do
   action :install
 end
 
-windows_feature 'HttpCompressionDynamic' do
+windows_feature 'IIS-HttpCompressionDynamic' do
   action :install
 end
 
