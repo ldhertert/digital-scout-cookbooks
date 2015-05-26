@@ -46,6 +46,7 @@ windows_package 'Install New Relic Server Monitoring Agent' do
 end
 
 #this shouldn't be necessary, because it's required by opsworks, but the "update custom cookbooks is failing due to git not being accessible"
-windows_path 'C:\ProgramData\Git\bin' do
-  action :add
+powershell_script "Add git to path" do
+	code '[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\ProgramData\Git\bin", "Machine")'
+	not_if '[Environment]::GetEnvironmentVariable("Path", "Machine").ToLower().Contains("git\bin")'
 end
