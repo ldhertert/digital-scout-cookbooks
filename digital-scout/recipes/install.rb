@@ -54,7 +54,7 @@ powershell_script "Add git to path" do
 end
 
 route53_record "create DNS host record" do
-  name  node[:opsworks][:instance][:hostname] + '.digitalscout.com'
+  name  node[:opsworks][:instance][:hostname]
   value Net::HTTP.get(URI.parse('http://169.254.169.254/latest/meta-data/public-ipv4'))
   type  "A"
   ttl   60
