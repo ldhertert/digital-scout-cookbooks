@@ -1,4 +1,8 @@
-remote_file "#{Chef::Config[:file_cache_path]}/hsgc/artifacts.zip" do
+directory '#{Chef::Config[:file_cache_path]}\hsgc\' do
+  action :create
+end
+
+remote_file '#{Chef::Config[:file_cache_path]}\hsgc\artifacts.zip' do
   source "http://build.digitalscout.com:8080/job/GameCenterProduction/lastSuccessfulBuild/artifact/*zip*/archive.zip"
 end
 
