@@ -50,3 +50,7 @@ powershell_script "Add git to path" do
 	code '[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\ProgramData\Git\bin", "Machine")'
 	not_if '[Environment]::GetEnvironmentVariable("Path", "Machine").ToLower().Contains("git\bin")'
 end
+
+#set up dns
+#set up loggly
+#backups?
